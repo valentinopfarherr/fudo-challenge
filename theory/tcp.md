@@ -1,0 +1,1 @@
+TCP (Protocolo de Control de Transmisión) es un protocolo de comunicación confiable en redes. Se encarga de dividir datos en paquetes, establecer conexiones entre dispositivos y garantizar la entrega secuencial y sin errores de información, verificando su correcta recepción. Es fundamental en Internet para transferencias seguras de datos.

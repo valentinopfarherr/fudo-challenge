@@ -1,0 +1,1 @@
+HTTP (Protocolo de Transferencia de Hipertexto) es el mensajero de la web. Permite la solicitud y entrega de información entre un navegador y un servidor. Define cómo se comunican y comparten datos, como páginas web, imágenes o videos, facilitando la experiencia en Internet.

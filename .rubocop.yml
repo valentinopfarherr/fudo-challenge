@@ -1,0 +1,18 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  TargetRubyVersion: 3.3
+  Exclude:
+    - "vendor/**/*"
+    - "db/**/*"
+    - "config/**/*"
+    - "spec/**/*"
+
+Metrics/MethodLength:
+  Max: 25
+
+Metrics/BlockLength:
+  Max: 35
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
