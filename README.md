@@ -61,7 +61,9 @@ Para correr las pruebas en local:
 RACK_ENV=test REDIS_URL=redis://localhost:6395/1 bundle exec rspec
 ```
 
-## Detener y Limpiar
+## Detener
+
+Detener la ejecución de los contenedores:
 ```sh
 docker-compose down
 ```
