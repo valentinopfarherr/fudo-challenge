@@ -32,14 +32,25 @@ jobs:
       - name: Install dependencies
         run: bundle install
 
+      - name: Build and start the app using Docker Compose
+        run: |
+          docker compose up -d --build
+
+      - name: Wait for services to be ready
+        run: sleep 10  # Da tiempo a que Redis y la App se inicien
+
       - name: Run Sidekiq
-        run: bundle exec sidekiq -r ./app.rb
+        run: docker compose exec -T app bundle exec sidekiq -r ./config/sidekiq.rb
 
       - name: Run tests
         env:
           RACK_ENV: test
-          REDIS_URL: redis://localhost:6379/1
-        run: bundle exec rspec
+          REDIS_URL: redis://redis:6379/1
+        run: docker compose exec -T app bundle exec rspec
+
+      - name: Stop services after tests
+        if: always()
+        run: docker compose down
 
   deploy:
     name: Deploy to Production

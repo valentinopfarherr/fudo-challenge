@@ -28,8 +28,9 @@ Asegúrate de tener instalados los siguientes programas:
 ```sh
 git clone https://github.com/tu-usuario/fudo-challenge.git
 ```
-
+```sh
 cd fudo-challenge
+```
 
 2 - Instalar dependencias
 ```sh
@@ -69,7 +70,7 @@ docker-compose down
 ```
 
 
-## Get Openapi documentation
+## Documentacioón Openapi 
 
 Request:
 ```sh
