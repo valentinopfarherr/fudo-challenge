@@ -4,9 +4,12 @@ Este proyecto es una API desarrollada con **Cuba.rb** para la gestión de usuari
 Implementa autenticación de usuarios y permite la creación y consulta de productos.  
 La creación de productos se procesa en segundo plano utilizando **Sidekiq**.
 
+## Información Teórica
+La información teórica sobre Fudo, TCP y HTTP se encuentra en la carpeta "theory". Consulta los archivos Markdown correspondientes para obtener más detalles.
+
 ## Funcionalidades Principales
-✅ Registro y autenticación de usuarios  
-✅ Obtención de productos  
+✅ Registro y autenticación de usuarios (Permite iniciar sesión y registrar nuevos usuarios con validaciones, utilizando BCrypt para el hash de contraseñas y JWT para la generación de tokens de autenticación)
+✅ Obtención de productos
 ✅ Creación de productos en segundo plano con **Sidekiq**  
 ✅ Uso de **Redis** como almacenamiento en memoria y cola de trabajos  
 
@@ -39,7 +42,7 @@ bundle install
 Ejecuta el siguiente comando para construir y correr todos los servicios:
 
 ```sh
-podman-compose up -d --build
+docker-compose up -d --build
 ```
 
 
@@ -59,6 +62,9 @@ RACK_ENV=test REDIS_URL=redis://localhost:6395/1 bundle exec rspec
 ```
 
 ## Detener y Limpiar
+```sh
+docker-compose down
+```
 
 
 ## Get Openapi documentation
