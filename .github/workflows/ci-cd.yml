@@ -50,9 +50,6 @@ jobs:
           echo "Error: Los servicios no se iniciaron correctamente."
           exit 1
 
-      - name: Run Sidekiq
-        run: docker compose exec -T sidekiq bundle exec sidekiq -r ./app.rb
-
       - name: Run tests
         env:
           RACK_ENV: test
