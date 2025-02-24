@@ -1,7 +1,9 @@
 require "cuba"
+require "sidekiq"
 require_relative "routes/products"
 require_relative "routes/auth"
 require_relative "routes/static"
+require_relative "./workers/product_worker"
 
 Cuba.define do
   on root do

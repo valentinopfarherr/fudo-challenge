@@ -1,6 +1,6 @@
 require "jwt"
 
-SECRET_KEY = "mi_clave_secreta_super_segura" 
+SECRET_KEY = ENV.fetch("SECRET_KEY") { "fallback_key" }
 
 module JwtHelper
   def self.encode(payload, exp = 24 * 3600) 
