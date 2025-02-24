@@ -33,14 +33,25 @@ jobs:
         run: bundle install
 
       - name: Build and start the app using Docker Compose
-        run: |
-          docker compose up -d --build
+        run: docker compose up -d --build
 
       - name: Wait for services to be ready
-        run: sleep 10  # Da tiempo a que Redis y la App se inicien
+        run: |
+          echo "Esperando a que Redis y la aplicación estén listos..."
+          for i in {1..10}; do
+            if docker compose exec -T app curl -s http://localhost:9292 > /dev/null && \
+               docker compose exec -T redis redis-cli ping | grep -q PONG; then
+              echo "Todos los servicios están listos."
+              exit 0
+            fi
+            echo "Intento $i: Servicios aún no disponibles..."
+            sleep 5
+          done
+          echo "Error: Los servicios no se iniciaron correctamente."
+          exit 1
 
       - name: Run Sidekiq
-        run: docker compose exec -T app bundle exec sidekiq -r ./config/sidekiq.rb
+        run: docker compose exec -T sidekiq bundle exec sidekiq -r ./app.rb
 
       - name: Run tests
         env:
