@@ -4,6 +4,7 @@ require_relative "../helpers/response_helper"
 require_relative "../models/product"
 require_relative "../workers/product_worker"
 require_relative "../helpers/auth_helper"
+require_relative "../helpers/request_helper"
 
 Products = Cuba.define do
   on get do
@@ -18,16 +19,20 @@ Products = Cuba.define do
     user = AuthHelper.authenticate!(req, res)
     next unless user
 
-    unless req.params["name"]
+    params, error = RequestHelper.extract_params(req)
+    if error
+      ResponseHelper.send_json(res, { error: error }, status: 400, req: req)
+      next
+    end
+
+    name = params["name"]&.strip
+
+    if name.nil? || name.empty?
       ResponseHelper.send_json(res, { error: "El nombre del producto es obligatorio." }, status: 400, req: req)
       next
     end
 
-    name = req.params["name"].strip
-
-    if name.empty?
-      ResponseHelper.send_json(res, { error: "El nombre del producto no puede estar vacío." }, status: 400, req: req)
-    elsif Product.exists?(name)
+    if Product.exists?(name)
       ResponseHelper.send_json(res, { error: "El producto '#{name}' ya existe." }, status: 409, req: req)
     else
       begin

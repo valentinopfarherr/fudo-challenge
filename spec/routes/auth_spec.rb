@@ -40,7 +40,7 @@ describe "Auth Routes" do
 
         expect(last_response.status).to eq(400)
         response_data = JSON.parse(last_response.body, symbolize_names: true)
-        expect(response_data[:error]).to eq("Faltan parámetros: 'username' y 'password'")
+        expect(response_data[:error]).to eq("El nombre de usuario y la contraseña son obligatorios")
       end
 
       it "devuelve un error si falta el password" do
@@ -48,7 +48,7 @@ describe "Auth Routes" do
 
         expect(last_response.status).to eq(400)
         response_data = JSON.parse(last_response.body, symbolize_names: true)
-        expect(response_data[:error]).to eq("Faltan parámetros: 'username' y 'password'")
+        expect(response_data[:error]).to eq("El nombre de usuario y la contraseña son obligatorios")
       end
 
       it "devuelve un error si username y password están vacíos" do
@@ -56,7 +56,7 @@ describe "Auth Routes" do
 
         expect(last_response.status).to eq(400)
         response_data = JSON.parse(last_response.body, symbolize_names: true)
-        expect(response_data[:error]).to eq("Faltan parámetros: 'username' y 'password'")
+        expect(response_data[:error]).to eq("El nombre de usuario y la contraseña son obligatorios")
       end
     end
   end
@@ -102,7 +102,7 @@ describe "Auth Routes" do
 
         expect(last_response.status).to eq(400)
         response_data = JSON.parse(last_response.body, symbolize_names: true)
-        expect(response_data[:error]).to eq("Faltan parámetros: 'username' y 'password'")
+        expect(response_data[:error]).to eq("El nombre de usuario y la contraseña son obligatorios")
       end
 
       it "devuelve un error si falta el password" do
@@ -110,7 +110,7 @@ describe "Auth Routes" do
 
         expect(last_response.status).to eq(400)
         response_data = JSON.parse(last_response.body, symbolize_names: true)
-        expect(response_data[:error]).to eq("Faltan parámetros: 'username' y 'password'")
+        expect(response_data[:error]).to eq("El nombre de usuario y la contraseña son obligatorios")
       end
 
       it "devuelve un error si username y password están vacíos" do
@@ -118,7 +118,7 @@ describe "Auth Routes" do
 
         expect(last_response.status).to eq(400)
         response_data = JSON.parse(last_response.body, symbolize_names: true)
-        expect(response_data[:error]).to eq("Faltan parámetros: 'username' y 'password'")
+        expect(response_data[:error]).to eq("El nombre de usuario y la contraseña son obligatorios")
       end
     end
   end

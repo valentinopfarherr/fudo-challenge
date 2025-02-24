@@ -64,7 +64,7 @@ describe "Products Routes" do
       it "devuelve error 400 si el nombre del producto es inválido" do
         post "/products", { name: "" }, { "HTTP_AUTHORIZATION" => valid_token }
         expect(last_response.status).to eq(400)
-        expect(JSON.parse(last_response.body)["error"]).to eq("El nombre del producto no puede estar vacío.")
+        expect(JSON.parse(last_response.body)["error"]).to eq("El nombre del producto es obligatorio.")
       end
 
       it "devuelve error 409 si el producto ya existe" do
