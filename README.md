@@ -9,10 +9,12 @@ La información teórica sobre Fudo, TCP y HTTP se encuentra en la carpeta "theo
 
 ## Funcionalidades Principales
 ✅ Registro y autenticación de usuarios (Permite iniciar sesión y registrar nuevos usuarios con validaciones, utilizando BCrypt para el hash de contraseñas y JWT para la generación de tokens de autenticación)
-✅ Obtención de productos
-✅ Creación de productos en segundo plano con **Sidekiq**  
-✅ Uso de **Redis** como almacenamiento en memoria y cola de trabajos  
 
+✅ Obtención de productos
+
+✅ Creación de productos en segundo plano con **Sidekiq**  
+
+✅ Uso de **Redis** como almacenamiento en memoria y cola de trabajos  
 
 ## Requisitos
 Asegúrate de tener instalados los siguientes programas:
@@ -238,6 +240,6 @@ paths:
                 type: string
 ```
 
-### Postman Coleecion
+### Postman Colección
 
 https://www.postman.com/valentinopfarherr/workspace/fudo-challenge
