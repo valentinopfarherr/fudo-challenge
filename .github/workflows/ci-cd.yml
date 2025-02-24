@@ -32,11 +32,8 @@ jobs:
       - name: Install dependencies
         run: bundle install
 
-      - name: Start Sidekiq
-        run: bundle exec sidekiq
-        env:
-          RACK_ENV: test
-          REDIS_URL: redis://localhost:6379/1
+      - name: Run Sidekiq
+        run: bundle exec sidekiq -r ./app.rb
 
       - name: Run tests
         env:
